@@ -19,7 +19,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("public/**").permitAll() // Cho phép truy cập trang chủ
-                        .requestMatchers("/admin/").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().permitAll()
                         .anyRequest().authenticated() // Mọi request khác đều yêu cầu xác thực
                 )
                 .formLogin(form -> form.permitAll()) // Mặc định cho phép form login
